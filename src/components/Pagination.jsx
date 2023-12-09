@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Pagination = ({ page, disabled }) => {
   const decreasePage = () => {
     page.value = page.value > 1 ? page.value - 1 : 1;
@@ -30,4 +32,28 @@ const Pagination = ({ page, disabled }) => {
   );
 };
 
+Pagination.propTypes = {
+  page: PropTypes.shape({
+    value: PropTypes.number.isRequired,
+  }),
+  disabled: PropTypes.shape({
+    value: PropTypes.bool.isRequired,
+  }),
+};
+
 export default Pagination;
+
+// Pagination.propTypes = {
+//   page: PropTypes.checkPropTypes(
+//     PropTypes.object({
+//       value: PropTypes.number,
+//     }),
+//     'page'
+//   ),
+//   disabled: PropTypes.checkPropTypes(
+//     PropTypes.object({
+//       value: PropTypes.bool,
+//     }),
+//     'disabled'
+//   ),
+// };

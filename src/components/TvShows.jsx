@@ -11,12 +11,12 @@ const TvShows = () => {
       <Pagination page={page} disabled={loading} />
       {shows.value.length > 0 ? (
         <>
-          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 m-auto'>
+          <div className=' ml-3 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-1 m-auto'>
             {shows.value.map(show => {
               return (
                 <div
                   key={show.id}
-                  className='max-w-[250px] lg:max-w-[200px]  m-2 overflow-hidden shadow-lg border border-gray-300 rounded-lg hover:scale-105 transition-transform'
+                  className='max-w-[250px] lg:max-w-[200px]  m-2 overflow-hidden shadow-md hover:shadow-xl border border-gray-300 rounded-lg hover:scale-105 transition-transform'
                 >
                   <Link
                     to=''
@@ -29,7 +29,7 @@ const TvShows = () => {
                     />
                   </Link>
                   <div className='p-2  '>
-                    <h4 className='mb-1   tracking-tighter '>
+                    <h4 className='mb-1 tracking-tighter text-sm md:text-md'>
                       <Link to=''>
                         <span
                           className='text-gray-900 truncate max-w-xs block'

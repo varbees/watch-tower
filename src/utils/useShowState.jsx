@@ -16,7 +16,6 @@ const useShowState = type => {
       shows.value = res.data.results;
       page.value = res.data.page;
       loading.value = false;
-      console.log(shows.value);
     }
 
     getAllShows();
