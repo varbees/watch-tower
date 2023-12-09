@@ -9,6 +9,9 @@ const Navbar = () => {
       <Link to='/movies' className='text-teal-600'>
         Movies
       </Link>
+      <Link to='/tv' className='text-teal-600'>
+        TV Shows
+      </Link>
       <Link to='/watchlist' className='text-teal-600'>
         Watchlist
       </Link>

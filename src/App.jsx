@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import Movies from './components/Movies';
 import Watchlist from './components/Watchlist';
+import TvShows from './components/TvShows';
 
 function App() {
   // const name = signal('Watch Tower');
@@ -22,6 +23,7 @@ function App() {
           }
         />
         <Route path='/movies' element={<Movies />} />
+        <Route path='/tv' element={<TvShows />} />
         <Route path='/watchlist' element={<Watchlist />} />
       </Routes>
     </Router>
