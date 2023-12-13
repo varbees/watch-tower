@@ -1,12 +1,14 @@
-import { useSignal } from '@preact/signals-react';
+import { signal, useSignal } from '@preact/signals-react';
 import axios from 'axios';
 import { useEffect } from 'react';
+
+const watchlist = signal([]);
 
 const useShowState = type => {
   const shows = useSignal([]);
   const page = useSignal(1);
   const loading = useSignal(false);
-
+  console.log(watchlist.value);
   useEffect(() => {
     async function getAllShows() {
       loading.value = true;
@@ -19,8 +21,29 @@ const useShowState = type => {
     }
 
     getAllShows();
-  }, [page.value]);
-  return [shows, page, loading];
+  }, [page.value, type]);
+
+  const toggleWatchlistItem = id => {
+    if (watchlist.value.includes(id)) {
+      removeFromWatchlist(id);
+    } else {
+      addToWatchlist(id);
+    }
+  };
+
+  const addToWatchlist = id => {
+    if (!watchlist.value.includes(id)) {
+      const updatedWatchlist = [...watchlist.value, id];
+      watchlist.value = updatedWatchlist;
+    }
+  };
+
+  const removeFromWatchlist = id => {
+    const updatedWatchlist = watchlist.value.filter(showId => showId !== id);
+    watchlist.value = updatedWatchlist;
+  };
+
+  return [shows, page, watchlist, loading, toggleWatchlistItem];
 };
 
 export default useShowState;

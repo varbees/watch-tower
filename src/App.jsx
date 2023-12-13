@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Banner from './components/Banner';
-import Movies from './components/Movies';
-import Watchlist from './components/Watchlist';
-import TvShows from './components/TvShows';
+import Movies from './pages/Movies';
+import Watchlist from './pages/Watchlist';
+import TvShows from './pages/TvShows';
+import NotFound from './pages/NotFound';
 
 function App() {
   // const name = signal('Watch Tower');
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route
           path='/'
+          exact
           element={
             <>
               <Banner />
@@ -25,6 +27,7 @@ function App() {
         <Route path='/movies' element={<Movies />} />
         <Route path='/tv' element={<TvShows />} />
         <Route path='/watchlist' element={<Watchlist />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   );
