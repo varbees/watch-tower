@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { MdOutlineSkipPrevious, MdOutlineSkipNext } from 'react-icons/md';
 
 const Pagination = ({ page, disabled }) => {
   const decreasePage = () => {
@@ -8,25 +9,26 @@ const Pagination = ({ page, disabled }) => {
     page.value += 1;
   };
   return (
-    <div className='flex justify-center items-center p-2 my-2 text-lg '>
+    <div className=' flex justify-end items-center pr-3 my-1 mx-auto py-1'>
       <button
-        className='mx-8 px-2 py-0.5  border-2 border-gray-200 text-gray-400 hover:text-gray-500
-        bg-white hover:border-gray-400 cursor-pointer disabled:opacity-75'
+        className='border-gray-400 hover:border-white p-1 m-1 rounded-full
+        bg-white cursor-pointer hover:bg-teal-600 hover:text-white disabled:pointer-events-none'
         onClick={() => decreasePage()}
-        disabled={disabled.value}
+        disabled={page.value <= 1 || disabled.value}
       >
-        prev
+        <MdOutlineSkipPrevious className='text-xl rounded-full' />
       </button>
-      <div className='mx-8 text-lg rounded-full'>
-        <span>{page}</span>
+
+      <div className='text-lg  rounded-full'>
+        <span className='m-1 p-1'>{page.value}</span>
       </div>
       <button
-        className='mx-8 px-2 py-0.5  border-2 border-gray-200 text-gray-400 hover:text-gray-500
-        bg-white hover:border-gray-400 cursor-pointer disabled:opacity-75'
+        className='border-gray-400 hover:border-white p-1 m-0.5 rounded-full
+        bg-white cursor-pointer hover:bg-teal-600 hover:text-white disabled:pointer-events-none'
         onClick={() => increasePage()}
         disabled={disabled.value}
       >
-        next
+        <MdOutlineSkipNext className='text-xl rounded-full' />
       </button>
     </div>
   );
@@ -42,18 +44,3 @@ Pagination.propTypes = {
 };
 
 export default Pagination;
-
-// Pagination.propTypes = {
-//   page: PropTypes.checkPropTypes(
-//     PropTypes.object({
-//       value: PropTypes.number,
-//     }),
-//     'page'
-//   ),
-//   disabled: PropTypes.checkPropTypes(
-//     PropTypes.object({
-//       value: PropTypes.bool,
-//     }),
-//     'disabled'
-//   ),
-// };

@@ -11,7 +11,7 @@ const useShowState = type => {
     async function getAllShows() {
       loading.value = true;
       const res = await axios.get(
-        `https://api.themoviedb.org/3/trending/${type}/day?language=en-US&page=${page}&api_key=6ed9eba4505892b51f147b962cf7acfc`
+        `https://api.themoviedb.org/3/trending/${type}/day?language=en-US&page=${page.value}&api_key=6ed9eba4505892b51f147b962cf7acfc`
       );
       shows.value = res.data.results;
       page.value = res.data.page;
