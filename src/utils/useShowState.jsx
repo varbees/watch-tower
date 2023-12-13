@@ -2,7 +2,10 @@ import { signal, useSignal } from '@preact/signals-react';
 import axios from 'axios';
 import { useEffect } from 'react';
 
-const watchlist = signal([]);
+const localWatchlist = localStorage.getItem('watchlist')
+  ? JSON.parse(localStorage.getItem('watchlist'))
+  : [];
+export const watchlist = signal(localWatchlist);
 
 const useShowState = type => {
   const shows = useSignal([]);
@@ -23,23 +26,25 @@ const useShowState = type => {
     getAllShows();
   }, [page.value, type]);
 
-  const toggleWatchlistItem = id => {
-    if (watchlist.value.includes(id)) {
-      removeFromWatchlist(id);
+  const toggleWatchlistItem = show => {
+    if (watchlist.value.some(item => item.id === show.id)) {
+      removeFromWatchlist(show);
     } else {
-      addToWatchlist(id);
+      addToWatchlist(show);
     }
   };
 
-  const addToWatchlist = id => {
-    if (!watchlist.value.includes(id)) {
-      const updatedWatchlist = [...watchlist.value, id];
-      watchlist.value = updatedWatchlist;
-    }
+  const addToWatchlist = show => {
+    const updatedWatchlist = [...watchlist.value, show];
+    localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist));
+    watchlist.value = updatedWatchlist;
   };
 
-  const removeFromWatchlist = id => {
-    const updatedWatchlist = watchlist.value.filter(showId => showId !== id);
+  const removeFromWatchlist = show => {
+    const updatedWatchlist = watchlist.value.filter(
+      item => item.id !== show.id
+    );
+    localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist));
     watchlist.value = updatedWatchlist;
   };
 

@@ -9,17 +9,17 @@ const Pagination = ({ page, disabled }) => {
     page.value += 1;
   };
   return (
-    <div className=' flex justify-end items-center pr-3 my-1 mx-auto py-1'>
+    <div className='flex justify-end items-center my-1 mx-2 pr-5 text-xl md:text-2xl align-text-top'>
       <button
         className='border-gray-400 hover:border-white p-1 m-1 rounded-full
         bg-white cursor-pointer hover:bg-teal-600 hover:text-white disabled:pointer-events-none'
         onClick={() => decreasePage()}
         disabled={page.value <= 1 || disabled.value}
       >
-        <MdOutlineSkipPrevious className='text-xl rounded-full' />
+        <MdOutlineSkipPrevious />
       </button>
 
-      <div className='text-lg  rounded-full'>
+      <div className='text-lg rounded-full'>
         <span className='m-1 p-1'>{page.value}</span>
       </div>
       <button
@@ -28,7 +28,7 @@ const Pagination = ({ page, disabled }) => {
         onClick={() => increasePage()}
         disabled={disabled.value}
       >
-        <MdOutlineSkipNext className='text-xl rounded-full' />
+        <MdOutlineSkipNext />
       </button>
     </div>
   );
