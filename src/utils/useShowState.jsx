@@ -11,7 +11,6 @@ const useShowState = type => {
   const shows = useSignal([]);
   const page = useSignal(1);
   const loading = useSignal(false);
-  console.log(watchlist.value);
   useEffect(() => {
     async function getAllShows() {
       loading.value = true;

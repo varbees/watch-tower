@@ -22,23 +22,6 @@ const TvShows = () => {
               return (
                 <div key={show.id} className='relative'>
                   <CardContainer>
-                    <div
-                      style={{}}
-                      className='absolute top-2 right-2 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100'
-                    >
-                      {watchlistIds.includes(show.id) ? (
-                        <MdBookmark
-                          className='text-fuchsia-300'
-                          onClick={() => toggleWatchlistItem(show)}
-                        />
-                      ) : (
-                        <MdBookmarkBorder
-                          className='text-teal-100'
-                          onClick={() => toggleWatchlistItem(show)}
-                        />
-                      )}
-                    </div>
-
                     <Link
                       to=''
                       className='max-w-[250px] md:max-w-[250px] lg:max-w-[200px] h-[30vh]'
@@ -49,6 +32,24 @@ const TvShows = () => {
                         className='object-cover rounded-t-lg'
                       />
                     </Link>
+                    <div
+                      style={{}}
+                      className='absolute top-1 right-1 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100'
+                    >
+                      {watchlistIds.includes(show.id) ? (
+                        <MdBookmark
+                          className='text-red-400'
+                          onClick={() => toggleWatchlistItem(show)}
+                          title='Remove from watchlist '
+                        />
+                      ) : (
+                        <MdBookmarkBorder
+                          className='text-red-500'
+                          onClick={() => toggleWatchlistItem(show)}
+                          title='Add to watchlist '
+                        />
+                      )}
+                    </div>
                     <div className='p-2'>
                       <h4 className='mb-1 tracking-tighter text-sm md:text-md'>
                         <Link to=''>

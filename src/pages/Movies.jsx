@@ -21,23 +21,8 @@ const Movies = () => {
           <div className=' ml-3 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-1 m-auto'>
             {movies.value.map(movie => {
               return (
-                <div key={movie.id} className='relative '>
+                <div key={movie.id} className='relative'>
                   <CardContainer>
-                    <div className='absolute top-2 right-2 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100'>
-                      {watchlistIds.includes(movie.id) ? (
-                        <MdBookmark
-                          className='text-fuchsia-300'
-                          onClick={() => toggleWatchlistItem(movie)}
-                          title='Remove from watchlist'
-                        />
-                      ) : (
-                        <MdBookmarkBorder
-                          className='text-teal-100'
-                          onClick={() => toggleWatchlistItem(movie)}
-                          title='Add to watchlist'
-                        />
-                      )}
-                    </div>
                     <Link
                       to=''
                       className='max-w-[250px] md:max-w-[250px] lg:max-w-[200px] h-[30vh]'
@@ -48,6 +33,21 @@ const Movies = () => {
                         className='object-cover rounded-t-lg'
                       />
                     </Link>
+                    <div className='absolute top-1 right-1 text-3xl cursor-pointer  opacity-0 transition-opacity group-hover:opacity-100'>
+                      {watchlistIds.includes(movie.id) ? (
+                        <MdBookmark
+                          className='text-red-400'
+                          onClick={() => toggleWatchlistItem(movie)}
+                          title='Remove from watchlist'
+                        />
+                      ) : (
+                        <MdBookmarkBorder
+                          className='text-red-500'
+                          onClick={() => toggleWatchlistItem(movie)}
+                          title='Add to watchlist'
+                        />
+                      )}
+                    </div>
                     <div className='p-2'>
                       <h4 className='mb-1 tracking-tighter text-sm md:text-md'>
                         <Link to=''>
