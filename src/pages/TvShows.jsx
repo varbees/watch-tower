@@ -24,9 +24,10 @@ const TvShows = () => {
                   <CardContainer>
                     <Link
                       to=''
-                      className='max-w-[250px] md:max-w-[250px] lg:max-w-[200px] h-[30vh]'
+                      className='aspect-[9/12] block relative max-w-[250px] md:max-w-[250px] lg:max-w-[220px]'
                     >
                       <img
+                        loading='lazy'
                         src={`https://image.tmdb.org/t/p/original/t/p/w500/${show.poster_path}`}
                         alt={show.name}
                         className='object-cover rounded-t-lg'

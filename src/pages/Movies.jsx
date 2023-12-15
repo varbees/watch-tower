@@ -9,7 +9,6 @@ const Movies = () => {
   const [movies, page, watchlist, loading, toggleWatchlistItem] =
     useShowState('movie');
   const watchlistIds = watchlist.value.map(movie => movie.id);
-
   return (
     <div>
       <div className='flex items-center justify-between my-2'>
@@ -25,15 +24,17 @@ const Movies = () => {
                   <CardContainer>
                     <Link
                       to=''
-                      className='max-w-[250px] md:max-w-[250px] lg:max-w-[200px] h-[30vh]'
+                      className='aspect-[9/12] block relative max-w-[250px] md:max-w-[250px] lg:max-w-[220px]'
                     >
                       <img
+                        loading='lazy'
                         src={`https://image.tmdb.org/t/p/original/t/p/w500/${movie.poster_path}`}
                         alt={movie.title}
-                        className='object-cover rounded-t-lg'
+                        className={`object-cover rounded-t-lg`}
                       />
                     </Link>
-                    <div className='absolute top-1 right-1 text-3xl cursor-pointer  opacity-0 transition-opacity group-hover:opacity-100'>
+
+                    <div className='absolute top-1 right-1 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100'>
                       {watchlistIds.includes(movie.id) ? (
                         <MdBookmark
                           className='text-red-400'
@@ -48,6 +49,7 @@ const Movies = () => {
                         />
                       )}
                     </div>
+
                     <div className='p-2'>
                       <h4 className='mb-1 tracking-tighter text-sm md:text-md'>
                         <Link to=''>
