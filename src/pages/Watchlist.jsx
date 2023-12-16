@@ -1,5 +1,3 @@
-import { useSignal } from '@preact/signals-react';
-import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import CardContainer from '../components/Layout/CardContainer';
 import { watchlist } from '../utils/useShowState';
@@ -21,13 +19,13 @@ const Watchlist = () => {
   return (
     <>
       <div className='flex items-center justify-between flex-col md:flex-row my-2 p-4 lg:pr-7 text-center'>
-        <h1 className='my-1 px-4 text-3xl tracking-tight w-full md:w-[30%] md:text-left'>
+        <h1 className='my-1 mt-4 px-4 text-3xl tracking-tight w-full md:w-[30%] md:text-left'>
           Binge Watch
         </h1>
         <div className='w-[50%]'>
           <input
             type='text'
-            className='text-xs sm:text-sm border-2 w-full md:w-[75%] border-teal-500 text-center p-2 my-2 rounded-md'
+            className='text-xs sm:text-sm border-2 w-full md:w-[75%] border-teal-700 focus:border-gray-300 text-center p-2 my-2 rounded-md'
             placeholder='Search for Movies/TV Shows'
             value={searchShow.value}
             onChange={e => (searchShow.value = e.target.value)}
@@ -49,7 +47,7 @@ const Watchlist = () => {
         </select>
       </div>
       {searchFilteredShows.length > 0 ? (
-        <div className=' ml-3 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-1 m-auto'>
+        <div className='ml-3 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-1 m-auto'>
           {searchFilteredShows.map(show => {
             return (
               <div key={show.id} className='relative'>

@@ -6,14 +6,15 @@ import { MdBookmarkBorder, MdBookmark } from 'react-icons/md';
 import CardContainer from '../components/Layout/CardContainer';
 
 const TvShows = () => {
+  const showPagination = window.location.pathname === '/tv';
   const [shows, page, watchlist, loading, toggleWatchlistItem] =
     useShowState('tv');
   const watchlistIds = watchlist.value.map(tv => tv.id);
   return (
-    <div>
-      <div className='flex items-center justify-between my-2'>
-        <h1 className='px-5 text-3xl tracking-tight '>Trending Shows</h1>
-        <Pagination page={page} disabled={loading} />
+    <>
+      <div className='flex items-center justify-between my-4'>
+        <h1 className='px-5 text-3xl tracking-tight  mb-2'>Trending Shows</h1>
+        {showPagination && <Pagination page={page} disabled={loading} />}
       </div>
       {shows.value.length > 0 ? (
         <>
@@ -94,7 +95,7 @@ const TvShows = () => {
         <Loader />
       )}
       <Pagination page={page} disabled={loading} />
-    </div>
+    </>
   );
 };
 

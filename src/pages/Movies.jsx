@@ -4,16 +4,25 @@ import Pagination from '../components/Pagination';
 import useShowState from '../utils/useShowState';
 import { MdBookmark, MdBookmarkBorder } from 'react-icons/md';
 import CardContainer from '../components/Layout/CardContainer';
+import { signal } from '@preact/signals-react';
+
+export const banners = signal([]);
 
 const Movies = () => {
+  const showPagination = window.location.pathname === '/movies';
   const [movies, page, watchlist, loading, toggleWatchlistItem] =
     useShowState('movie');
   const watchlistIds = watchlist.value.map(movie => movie.id);
+
+  if (movies.value.length > 0) {
+    banners.value = movies.value.slice(0, 5).map(movie => movie.backdrop_path);
+  }
+
   return (
-    <div>
-      <div className='flex items-center justify-between my-2'>
-        <h1 className='px-5 text-3xl tracking-tight '>Trending Movies</h1>
-        <Pagination page={page} disabled={loading} />
+    <>
+      <div className='flex items-center justify-between my-4'>
+        <h1 className='px-5 text-3xl tracking-tight mb-2 '>Trending Movies</h1>
+        {showPagination && <Pagination page={page} disabled={loading} />}
       </div>
       {movies.value.length > 0 ? (
         <>
@@ -89,8 +98,8 @@ const Movies = () => {
       ) : (
         <Loader />
       )}
-      <Pagination page={page} disabled={loading} />
-    </div>
+      {showPagination && <Pagination page={page} disabled={loading} />}
+    </>
   );
 };
 

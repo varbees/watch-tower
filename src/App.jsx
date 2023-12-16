@@ -7,9 +7,6 @@ import TvShows from './pages/TvShows';
 import NotFound from './pages/NotFound';
 
 function App() {
-  // const name = signal('Watch Tower');
-  // effect(() => console.log(name.value));
-
   return (
     <Router>
       <Navbar />
@@ -21,6 +18,8 @@ function App() {
             <>
               <Banner />
               <Movies />
+              <br />
+              <TvShows />
             </>
           }
         />
