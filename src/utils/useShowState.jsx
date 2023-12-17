@@ -6,6 +6,7 @@ const localWatchlist = localStorage.getItem('watchlist')
   ? JSON.parse(localStorage.getItem('watchlist'))
   : [];
 export const watchlist = signal(localWatchlist);
+export const banners = signal([]);
 
 const useShowState = type => {
   const shows = useSignal([]);
@@ -20,6 +21,18 @@ const useShowState = type => {
       shows.value = res.data.results;
       page.value = res.data.page;
       loading.value = false;
+      if (shows.value.length > 0) {
+        const shuffledShows = shows.value.slice();
+        shuffledShows.sort(() => 0.5 - Math.random());
+
+        banners.value = shuffledShows.slice(0, 6).map(show => {
+          return {
+            title: show.title || show.name,
+            id: show.id,
+            backdrop_path: show.backdrop_path,
+          };
+        });
+      }
     }
 
     getAllShows();

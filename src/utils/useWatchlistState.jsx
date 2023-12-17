@@ -47,6 +47,16 @@ const useWatchlistState = () => {
     ...new Set(watchlist.value.map(show => show.genre_ids).flat()),
   ];
 
+  // other way using reduce
+  // const allGenreIds = [
+  //   ...new Set(
+  //     watchlist.value.reduce((acc, val) => {
+  //       acc.push(...val.genre_ids);
+  //       return acc;
+  //     }, [])
+  //   ),
+  // ];
+
   const genreNames = allGenreIds
     .map(id => genres[id])
     .filter(names => names !== undefined);

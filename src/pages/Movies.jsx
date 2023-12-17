@@ -4,19 +4,12 @@ import Pagination from '../components/Pagination';
 import useShowState from '../utils/useShowState';
 import { MdBookmark, MdBookmarkBorder } from 'react-icons/md';
 import CardContainer from '../components/Layout/CardContainer';
-import { signal } from '@preact/signals-react';
-
-export const banners = signal([]);
 
 const Movies = () => {
   const showPagination = window.location.pathname === '/movies';
   const [movies, page, watchlist, loading, toggleWatchlistItem] =
     useShowState('movie');
   const watchlistIds = watchlist.value.map(movie => movie.id);
-
-  if (movies.value.length > 0) {
-    banners.value = movies.value.slice(0, 5).map(movie => movie.backdrop_path);
-  }
 
   return (
     <>
