@@ -12,10 +12,10 @@ const Pagination = ({ page, disabled }) => {
   };
 
   return (
-    <div className='flex justify-end items-center my-2 mx-2 pr-5 text-xl md:text-2xl align-text-top'>
+    <div className='flex justify-end items-center my-2 mx-2 pr-5 text-lg md:text-2xl align-text-top select-none'>
       <button
         className={`border-gray-400 p-1 m-1 rounded-full
-          bg-white cursor-pointer hover:bg-teal-600 hover:text-white 
+          cursor-pointe bg-teal-100 hover:bg-teal-600 hover:text-white 
           ${disabled.value ? 'opacity-50 pointer-events-none' : ''}`}
         onClick={() => decreasePage()}
         disabled={page.value <= 1 || disabled.value}
@@ -30,7 +30,7 @@ const Pagination = ({ page, disabled }) => {
 
       <button
         className={`border-gray-400 p-1 m-0.5 rounded-full
-          bg-white cursor-pointer hover:bg-teal-600 hover:text-white 
+          cursor-pointer bg-teal-100 hover:bg-teal-600 hover:text-white 
           ${disabled.value ? 'opacity-50 pointer-events-none' : ''}`}
         onClick={() => increasePage()}
         disabled={disabled.value}

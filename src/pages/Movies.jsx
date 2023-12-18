@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import useShowState from '../utils/useShowState';
@@ -6,7 +6,8 @@ import { MdBookmark, MdBookmarkBorder } from 'react-icons/md';
 import CardContainer from '../components/Layout/CardContainer';
 
 const Movies = () => {
-  const showPagination = window.location.pathname === '/movies';
+  const location = useLocation();
+  const showPagination = location.pathname === '/movies';
   const [movies, page, watchlist, loading, toggleWatchlistItem] =
     useShowState('movie');
   const watchlistIds = watchlist.value.map(movie => movie.id);
@@ -36,10 +37,10 @@ const Movies = () => {
                       />
                     </Link>
 
-                    <div className='absolute top-1 right-1 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100'>
+                    <div className='absolute top-1 right-1 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100 select-none'>
                       {watchlistIds.includes(movie.id) ? (
                         <MdBookmark
-                          className='text-red-400'
+                          className='text-red-400 '
                           onClick={() => toggleWatchlistItem(movie)}
                           title='Remove from watchlist'
                         />

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import useShowState from '../utils/useShowState';
@@ -6,7 +6,8 @@ import { MdBookmarkBorder, MdBookmark } from 'react-icons/md';
 import CardContainer from '../components/Layout/CardContainer';
 
 const TvShows = () => {
-  const showPagination = window.location.pathname === '/tv';
+  const location = useLocation();
+  const showPagination = location.pathname === '/tv';
   const [shows, page, watchlist, loading, toggleWatchlistItem] =
     useShowState('tv');
   const watchlistIds = watchlist.value.map(tv => tv.id);
@@ -36,7 +37,7 @@ const TvShows = () => {
                     </Link>
                     <div
                       style={{}}
-                      className='absolute top-1 right-1 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100'
+                      className='absolute top-1 right-1 text-3xl cursor-pointer select-none opacity-0 transition-opacity  group-hover:opacity-100'
                     >
                       {watchlistIds.includes(show.id) ? (
                         <MdBookmark
@@ -94,7 +95,7 @@ const TvShows = () => {
       ) : (
         <Loader />
       )}
-      <Pagination page={page} disabled={loading} />
+      {showPagination && <Pagination page={page} disabled={loading} />}
     </>
   );
 };

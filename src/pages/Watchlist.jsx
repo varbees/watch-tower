@@ -63,7 +63,7 @@ const Watchlist = () => {
                       className='object-cover rounded-t-lg '
                     />
                   </Link>
-                  <div className='absolute top-1 right-1 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100'>
+                  <div className='absolute top-1 right-1 text-3xl cursor-pointer opacity-0 transition-opacity group-hover:opacity-100 select-none'>
                     <MdDelete
                       className='text-rose-500'
                       onClick={() => deleteWatchlistItem(show)}
