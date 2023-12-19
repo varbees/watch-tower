@@ -5,6 +5,7 @@ import Movies from './pages/Movies';
 import Watchlist from './pages/Watchlist';
 import TvShows from './pages/TvShows';
 import NotFound from './pages/NotFound';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/watchlist' element={<Watchlist />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

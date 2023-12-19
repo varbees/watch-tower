@@ -19,10 +19,10 @@ const Watchlist = () => {
   return (
     <>
       <div className='flex items-center justify-between flex-col md:flex-row my-2 p-4 lg:pr-7 text-center'>
-        <h1 className='my-1 mt-4 px-4 text-3xl tracking-tight w-full md:w-[30%] md:text-left'>
+        <h1 className='my-1 mt-4 p text-3xl tracking-tight w-full md:w-[20%] md:text-left'>
           Binge Watch
         </h1>
-        <div className='w-[50%]'>
+        <div className='w-[55%]'>
           <input
             type='text'
             className='text-xs sm:text-sm border-2 w-full md:w-[75%] border-teal-700 focus:border-gray-300 text-center p-2 my-2 rounded-md'
@@ -33,7 +33,7 @@ const Watchlist = () => {
         </div>
         <select
           id='genres'
-          className='w-[30%] md:w-[12%] lg:w-[10%] bg-teal-50 border border-teal-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block  p-2.5'
+          className='w-[25%] md:w-[12%] lg:w-[10%] bg-teal-50 border border-teal-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block  p-2.5'
           value={selectedGenre.value}
           onChange={e => (selectedGenre.value = e.target.value)}
           title='Genre'
@@ -121,7 +121,9 @@ const Watchlist = () => {
       ) : (
         <div className='flex flex-col items-center justify-center h-[50vh]'>
           <p className='text-center text-9xl'>🤷</p>
-          <p className='pt-2 text-2xl font-light'>Nope, not here!</p>
+          <p className='pt-2 text-2xl font-light'>
+            Add some favorites and come back
+          </p>
         </div>
       )}
     </>

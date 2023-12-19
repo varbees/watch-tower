@@ -10,6 +10,8 @@ export const banners = signal([]);
 const randomType = ['movie', 'tv'];
 
 const useShowState = type => {
+  const apiKey = import.meta.env.VITE_API_KEY;
+
   const shows = useSignal([]);
   const page = useSignal(1);
   const loading = useSignal(false);
@@ -17,7 +19,7 @@ const useShowState = type => {
     async function getAllShows() {
       loading.value = true;
       const res = await axios.get(
-        `https://api.themoviedb.org/3/trending/${type}/day?language=en-US&page=${page.value}&api_key=6ed9eba4505892b51f147b962cf7acfc`
+        `https://api.themoviedb.org/3/trending/${type}/day?language=en-US&page=${page.value}&api_key=${apiKey}`
       );
       shows.value = res.data.results;
       page.value = res.data.page;

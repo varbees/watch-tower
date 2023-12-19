@@ -9,11 +9,11 @@ const Navbar = () => {
 
   useEffect(() => {
     currentLocation.value = location.pathname;
-  }, [location]);
+  }, [location, currentLocation]);
 
   return (
     <div className='flex justify-between items-center border'>
-      <div className='flex space-x-6 items-center pl-3 py-4'>
+      <div className='flex space-x-6 items-center pl-3 py-4 text-sm font-semibold'>
         <Link to='/'>
           <img src={Logo} alt='Watch Tower Movies' className='w-[50px]' />
         </Link>
@@ -41,16 +41,6 @@ const Navbar = () => {
           }`}
         >
           Watchlist
-        </Link>
-      </div>
-      <div className='space-x-8 pr-3 py-4'>
-        <Link
-          to='/about'
-          className={`text-teal-600 hover:text-teal-600  p-2 rounded-md  duration-300 ${
-            currentLocation.value === '/about' && ' bg-black/90 text-teal-400'
-          }`}
-        >
-          About
         </Link>
       </div>
     </div>

@@ -10,13 +10,16 @@ const Footer = () => {
       <div className='float-right text-left width-[45%] md:mx-[80px]'>
         <p className='line-height-[1.3rem] pr-6'>
           Watch Tower is a movie browsing app. Powered by the magic of TMDB,
-          browse movies and shows like never before! Discover a whole new
-          universe of cinematic delights, seamlessly built with React.js and
-          Preact. A new Experience movie exploration reinvented, crafted with
-          Preact signals for a lightning-fast journey.
+          browse movies and shows and save them to your watchlist! Discover a
+          whole new universe of cinematic delights, seamlessly built with
+          React.js and Tailwind CSS.
+        </p>
+        <p className='line-height-[1.3rem] pr-6 mt-1 italic tracking-tight'>
+          Watch Tower is crafted with Preact signals for a lightning-fast
+          experience.
         </p>
       </div>
-      <div className='ml-10 pt-4 sm:pt-0 width-[35%] text-right '>
+      <div className='ml-10 pt-4 sm:pt-0 width-[35%] text-right pr-2'>
         <p>
           Made by{' '}
           <a
