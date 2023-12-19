@@ -8,10 +8,9 @@ const localWatchlist = localStorage.getItem('watchlist')
 export const watchlist = signal(localWatchlist);
 export const banners = signal([]);
 const randomType = ['movie', 'tv'];
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const useShowState = type => {
-  const apiKey = import.meta.env.VITE_API_KEY;
-
   const shows = useSignal([]);
   const page = useSignal(1);
   const loading = useSignal(false);
